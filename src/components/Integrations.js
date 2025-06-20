@@ -9,7 +9,7 @@ const Integrations = ({ integrations }) => {
       <div className="integration-grid">
         {integrations.map((integration, index) => (
           <div key={index} className="integration-item">
-            <img src={integration.icon} alt={integration.name} />
+            {/* <img src={integration.icon} alt={integration.name} /> */}
             <span>{integration.name}</span>
           </div>
         ))}

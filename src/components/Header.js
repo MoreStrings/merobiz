@@ -6,7 +6,7 @@ const Header = ({ mobileMenuOpen, setMobileMenuOpen }) => {
 
   return (
     <header className="sales-header">
-      <div className="logo">SalesPro</div>
+      <div className="logo" onClick={() => navigate('/')}>SalesPro</div>
       <button className="mobile-menu-button"
         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>☰</button>
       <nav className={`sales-nav ${mobileMenuOpen ? 'open' : ''}`}>
@@ -16,7 +16,7 @@ const Header = ({ mobileMenuOpen, setMobileMenuOpen }) => {
         <a href="/support">Support</a>
         <div className="cta-buttons">
           <button className="btn-secondary" onClick={() => navigate('/login')}>Sign In</button>
-          <button className="btn-primary">Get Started</button>
+          <button className="btn-primary" onClick={() => navigate('/register')}>Get Started</button>
         </div>
       </nav>
     </header>

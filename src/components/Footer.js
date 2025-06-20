@@ -37,10 +37,10 @@ const Footer = () => {
         <div className="footer-section">
           <h4>Connect With Us</h4>
           <div className="social-links">
-            <a href="/facebook"><img src="facebook-icon.png" alt="Facebook" /></a>
+            {/* <a href="/facebook"><img src="facebook-icon.png" alt="Facebook" /></a>
             <a href="/twitter"><img src="twitter-icon.png" alt="Twitter" /></a>
             <a href="/linkedin"><img src="linkedin-icon.png" alt="LinkedIn" /></a>
-            <a href="/youtube"><img src="youtube-icon.png" alt="YouTube" /></a>
+            <a href="/youtube"><img src="youtube-icon.png" alt="YouTube" /></a> */}
           </div>
           <div className="newsletter">
             <input type="email" placeholder="Your email address" />

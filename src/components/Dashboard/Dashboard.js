@@ -4,6 +4,7 @@ import { Routes, Route } from 'react-router-dom';
 import DynamicPricing from './DynamicPricing';
 import SocialTrends from './SocialTrends';
 import FraudDetection from './FraudDetection';
+import Footer from '../Footer';
 
 const Dashboard = () => (
   <div className="dashboard-layout">
@@ -15,6 +16,7 @@ const Dashboard = () => (
         <Route path="fraud" element={<FraudDetection />} />
         <Route path="/" element={<div>Welcome to your dashboard!</div>} />
       </Routes>
+      <Footer />
     </div>
   </div>
 );

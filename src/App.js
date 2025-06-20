@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header';
@@ -10,13 +10,20 @@ import Integrations from './components/Integrations';
 import Footer from './components/Footer';
 import Dashboard from './components/Dashboard/Dashboard';
 import Login from './components/Login';
+import Register from './components/Register';
 
 const App = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeTab, setActiveTab] = useState('monthly');
   const [user, setUser] = useState(null);
 
-
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    const userEmail = localStorage.getItem("user");
+    if (token && userEmail) {
+      setUser(userEmail); // or you could set user as an object
+    }
+  },[]);
   // (the data would normally be placed in separate files or context, 
   // but I'll leave them here for simplicity)
 
@@ -92,6 +99,8 @@ const App = () => {
     ]
   };
 
+  // const isAuthenticated = !!user;
+
   const integrations = [
     { name: "Google Workspace", icon: "google-icon.png" },
     { name: "Microsoft 365", icon: "microsoft-icon.png" },
@@ -101,44 +110,28 @@ const App = () => {
     { name: "Zapier", icon: "zapier-icon.png" }
   ];
 
-  return (
-<>
-    <Router>
+   return (
+    <>
       <Header mobileMenuOpen={mobileMenuOpen} setMobileMenuOpen={setMobileMenuOpen} />
       <Routes>
         <Route path="/" element={
           <>
             <Hero />
             <Features />
-            <Testimonials testimonials={[]} />
-            <Pricing pricingPlans={{}} activeTab="monthly" setActiveTab={() => {}} />
-            <Integrations integrations={[]} />
+            <Testimonials testimonials={testimonials} />
+            <Pricing
+              pricingPlans={pricingPlans}
+              activeTab={activeTab}
+              setActiveTab={setActiveTab}
+            />
+            <Integrations integrations={integrations} />
             <Footer />
           </>
         } />
         <Route path="/login" element={<Login setUser={setUser} />} />
-        <Route path="/dashboard" element={user ? <Dashboard /> : <Navigate to="/login" />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/dashboard/*" element={user? <Dashboard /> : <Navigate to="/login" />} />
       </Routes>
-    </Router>
-    
-    <div className="sales-landing">
-      <Header
-        mobileMenuOpen={mobileMenuOpen}
-        setMobileMenuOpen={setMobileMenuOpen}
-      />
-
-      <Hero />
-
-      <Features />
-
-      <Testimonials testimonials={testimonials} />
-
-      <Pricing pricingPlans={pricingPlans} activeTab={activeTab} setActiveTab={setActiveTab} />
-
-      <Integrations integrations={integrations} />
-
-      <Footer />
-    </div>
     </>
   );
 }
