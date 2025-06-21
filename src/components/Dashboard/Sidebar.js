@@ -6,7 +6,8 @@ const Sidebar = () => (
     <ul>
       <li><NavLink to="/dashboard/pricing">Dynamic Pricing</NavLink></li>
       <li><NavLink to="/dashboard/social">Social Trends</NavLink></li>
-      <li><NavLink to="/dashboard/fraud">Fraud Detection</NavLink></li>
+      <li><NavLink to="/dashboard/fraud">Fraud Detection(single transaction)</NavLink></li>
+      <li><NavLink to="/dashboard/fraud-batch">Fraud Detection (batch)</NavLink> </li>
     </ul>
   </nav>
 );
